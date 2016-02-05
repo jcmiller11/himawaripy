@@ -12,10 +12,11 @@ near-realtime picture of Earth.
 ## Supported Desktop Environments
 ### Tested
 * Unity 7
+* Mate 1.8.1
+* Pantheon
 
 ### Not Tested
 * GNOME 3
-* MATE
 * LXDE
 * KDE
 * OS X
@@ -33,6 +34,12 @@ You can also change the path of the latest picture, which is by default
 `~/.himawari/himawari-latest.png`, by changing the `output_file` variable.
 
 ## Installation
+Make sure that you have [pillow](https://python-pillow.github.io/) installed:
+
+    pip3 install pillow
+
+Then you can install himawaripy:
+
     cd ~
     git clone https://github.com/boramalper/himawaripy.git
     
@@ -46,7 +53,7 @@ You can also change the path of the latest picture, which is by default
     # set up a cronjob
     crontab -e
     # Add the line:
-    # */10 * * * * /home/USERNAME/himawaripy/himawaripy.py
+    */10 * * * * /home/USERNAME/himawaripy/himawaripy.py
     
 ### For KDE Users
 > So the issue here is that KDE does not support changing the desktop wallpaper
@@ -63,6 +70,23 @@ You can also change the path of the latest picture, which is by default
 >   depending on your download speed)
 
 Many thanks to [xenithorb](https://github.com/xenithorb) [for the solution](https://github.com/xenithorb/himawaripy/commit/01d7c681ae7ce47f639672733d0f734574662833)!
+
+## Uninstallation
+    # remove the cronjob
+    crontab -e
+    # Remove the line
+    */10 * * * * /home/USERNAME/himawaripy/himawaripy.py
+
+    # Remove the data directory
+    # By default, `~/.himawari`. Check `output_file` variable in himawaripy.py
+    # in case you've changed it.
+    rm -rf ~/.himawari
+
+    # Remove the installation folder
+    rm -rf ~/himawaripy
+
+If you would like to share why, you can contact me on github or
+[send an e-mail](mailto:bora@boramalper.org).
 
 ## Example
 ![Earth, as 2016/02/04/13:30:00 GMT](http://i.imgur.com/4XA6WaM.jpg)
